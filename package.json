@@ -1,0 +1,12 @@
+{
+  "name": "nobu-beauty-club-demo",
+  "version": "1.0.0",
+  "description": "Nobú Beauty Club — Premium Web Demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
