@@ -2358,15 +2358,17 @@
        ═══════════════════════════════════════ */
 
     .faq {
-      padding: 8rem 0;
-      background: var(--color-white);
+      padding: 9rem 0 8rem;
+      background: var(--color-bg);
+      position: relative;
     }
 
-    .faq-inner {
+    .faq-top {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 5rem;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 6rem;
       align-items: start;
+      margin-bottom: 4.5rem;
     }
 
     .faq-header .section-label {
@@ -2374,32 +2376,87 @@
     }
 
     .faq-header h2 {
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-size: clamp(2rem, 3.8vw, 3rem);
       color: var(--color-dark);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
     }
 
-    .faq-header p {
-      font-size: 0.95rem;
-      line-height: 1.75;
+    .faq-header-sub {
+      font-family: var(--font-accent);
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      line-height: 1.8;
       color: var(--color-text-muted);
+      max-width: 380px;
     }
 
+    .faq-quick-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-top: 1rem;
+    }
+
+    .faq-quick-card {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.2rem;
+      align-items: center;
+      padding: 1.5rem 1.8rem;
+      background: var(--color-white);
+      border-radius: 2px;
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    .faq-quick-card:hover {
+      transform: translateX(4px);
+    }
+
+    .faq-quick-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--color-gold);
+      line-height: 1;
+    }
+
+    .faq-quick-card h4 {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-quick-card p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Accordion */
     .faq-list {
       display: flex;
       flex-direction: column;
+      max-width: 820px;
     }
 
     .faq-item {
-      border-bottom: 1px solid var(--color-cream-dark);
+      border-bottom: 1px solid rgba(28, 28, 28, 0.08);
       cursor: pointer;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid rgba(28, 28, 28, 0.08);
     }
 
     .faq-question {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.5rem 0;
+      padding: 1.6rem 0;
       gap: 2rem;
     }
 
@@ -2415,11 +2472,33 @@
       color: var(--color-gold);
     }
 
+    .faq-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      background: rgba(201, 169, 122, 0.1);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      margin-right: 0.8rem;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
     .faq-icon {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       flex-shrink: 0;
       position: relative;
+      border-radius: 50%;
+      border: 1px solid rgba(28, 28, 28, 0.1);
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .faq-item:hover .faq-icon {
+      border-color: var(--color-gold);
     }
 
     .faq-icon::before,
@@ -2431,7 +2510,7 @@
     }
 
     .faq-icon::before {
-      width: 14px;
+      width: 10px;
       height: 1px;
       top: 50%;
       left: 50%;
@@ -2440,10 +2519,15 @@
 
     .faq-icon::after {
       width: 1px;
-      height: 14px;
+      height: 10px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+
+    .faq-item.active .faq-icon {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
     }
 
     .faq-item.active .faq-icon::after {
@@ -2453,7 +2537,7 @@
 
     .faq-item.active .faq-icon::before,
     .faq-item.active .faq-icon::after {
-      background: var(--color-gold);
+      background: var(--color-white);
     }
 
     .faq-answer {
@@ -2464,15 +2548,25 @@
 
     .faq-answer p {
       font-size: 0.9rem;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--color-text-muted);
-      padding-bottom: 1.5rem;
+      padding-bottom: 1.8rem;
+      max-width: 680px;
     }
 
     @media (max-width: 900px) {
-      .faq-inner {
+      .faq {
+        padding: 5rem 0 4rem;
+      }
+
+      .faq-top {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .faq-quick-info {
+        padding-top: 0;
       }
     }
 
@@ -2481,91 +2575,242 @@
        ═══════════════════════════════════════ */
 
     .cta-final {
-      padding: 7rem 0;
-      background: var(--color-gold);
+      padding: 0;
       position: relative;
       overflow: hidden;
     }
 
-    .cta-final::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-      opacity: 0.5;
-      pointer-events: none;
+    .cta-final-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
     }
 
-    .cta-final-inner {
-      text-align: center;
+    /* Left panel — dark, editorial */
+    .cta-final-left {
+      background: var(--color-dark);
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: relative;
-      z-index: 1;
+    }
+
+    .cta-final-left::after {
+      content: '';
+      position: absolute;
+      top: 4rem;
+      right: 4rem;
+      width: 60px;
+      height: 60px;
+      border: 1px solid rgba(201, 169, 122, 0.15);
+      border-radius: 50%;
+    }
+
+    .cta-final-left .section-label {
+      color: var(--color-gold);
+      margin-bottom: 2rem;
     }
 
     .cta-final h2 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      color: var(--color-dark);
-      margin-bottom: 1rem;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      color: var(--color-white);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+      max-width: 440px;
     }
 
     .cta-final h2 em {
       font-family: var(--font-accent);
       font-style: italic;
       font-weight: 300;
+      color: var(--color-gold);
     }
 
-    .cta-final > .container > p,
-    .cta-final-inner > p {
-      font-size: 1.05rem;
-      color: rgba(28, 28, 28, 0.7);
-      max-width: 520px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
+    .cta-final-left > p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 400px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .cta-final-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 360px;
     }
 
     .cta-final-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.8rem;
       font-family: var(--font-body);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-white);
-      background: var(--color-dark);
-      padding: 1.2rem 3rem;
+      color: var(--color-dark);
+      background: var(--color-gold);
+      padding: 1.2rem 2.5rem;
       transition: all 0.4s var(--ease-out-expo);
+      text-align: center;
     }
 
     .cta-final-btn:hover {
       background: var(--color-white);
       color: var(--color-dark);
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(28, 28, 28, 0.2);
+      box-shadow: 0 12px 40px rgba(201, 169, 122, 0.3);
     }
 
     .cta-final-btn svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       fill: currentColor;
     }
 
-    .cta-final-contact {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: rgba(28, 28, 28, 0.55);
+    .cta-final-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 1rem 2.5rem;
+      transition: all 0.4s var(--ease-out-expo);
+      text-align: center;
     }
 
-    .cta-final-contact a {
+    .cta-final-btn-secondary:hover {
+      color: var(--color-white);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .cta-final-btn-secondary svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Right panel — warm, trust-building */
+    .cta-final-right {
+      background: var(--color-nude);
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .cta-final-promise {
+      margin-bottom: 3rem;
+    }
+
+    .cta-final-promise h3 {
+      font-family: var(--font-accent);
+      font-size: clamp(1.3rem, 2vw, 1.6rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .cta-final-promise p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      max-width: 380px;
+    }
+
+    .cta-final-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .cta-final-detail {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .cta-final-detail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(139, 77, 59, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-final-detail-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: #8B4D3B;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cta-final-detail span {
+      font-size: 0.88rem;
       color: var(--color-dark);
       font-weight: 500;
-      transition: opacity 0.3s;
     }
 
-    .cta-final-contact a:hover {
-      opacity: 0.7;
+    .cta-final-detail small {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      font-weight: 400;
+      margin-top: 0.15rem;
+    }
+
+    /* Divider line between details */
+    .cta-final-detail + .cta-final-detail {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(139, 77, 59, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .cta-final-split {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .cta-final-left {
+        padding: 4rem 2rem;
+      }
+
+      .cta-final-left::after {
+        display: none;
+      }
+
+      .cta-final-right {
+        padding: 3.5rem 2rem;
+      }
+
+      .cta-final-actions {
+        max-width: 100%;
+      }
     }
 
     /* Map */
@@ -3329,78 +3574,178 @@
   </section>
 
   <!-- ═══ FAQ ═══ -->
-  <section class="faq">
+  <section class="faq" id="faq">
     <div class="container">
-      <div class="faq-inner">
+
+      <!-- Top: header + quick info cards -->
+      <div class="faq-top">
         <div class="faq-header reveal">
-          <p class="section-label">Preguntas frecuentes</p>
+          <p class="section-label">Antes de tu visita</p>
           <h2>Todo lo que necesitas <em>saber</em></h2>
-          <p>Resolvemos las dudas más habituales antes de tu primera visita.</p>
+          <p class="faq-header-sub">Las respuestas que resuelven tus dudas antes de reservar tu primera cita.</p>
         </div>
-        <div class="faq-list">
-          <div class="faq-item reveal">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              <h4>¿Necesito cita previa?</h4>
-              <div class="faq-icon"></div>
-            </div>
-            <div class="faq-answer">
-              <p>Sí, recomendamos reservar cita para garantizarte el tiempo y la cabina que necesitas. Puedes hacerlo fácilmente por WhatsApp o llamando al 675 57 93 92.</p>
+        <div class="faq-quick-info reveal">
+          <div class="faq-quick-card">
+            <div class="faq-quick-num">01</div>
+            <div>
+              <h4>Consulta gratuita</h4>
+              <p>Evaluamos tu caso sin compromiso</p>
             </div>
           </div>
-          <div class="faq-item reveal">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              <h4>¿Los tratamientos médicos los realiza personal sanitario?</h4>
-              <div class="faq-icon"></div>
-            </div>
-            <div class="faq-answer">
-              <p>Siempre. Nuestros médicos están certificados en medicina estética y dermoestética. Cada tratamiento médico se realiza bajo protocolo clínico riguroso.</p>
+          <div class="faq-quick-card">
+            <div class="faq-quick-num">02</div>
+            <div>
+              <h4>Plan personalizado</h4>
+              <p>Diseñado para tus objetivos</p>
             </div>
           </div>
-          <div class="faq-item reveal">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              <h4>¿Qué marcas de productos utilizáis?</h4>
-              <div class="faq-icon"></div>
-            </div>
-            <div class="faq-answer">
-              <p>Trabajamos con marcas de referencia dermatológica internacional como Medik8, seleccionadas por su eficacia clínicamente probada y su seguridad.</p>
-            </div>
-          </div>
-          <div class="faq-item reveal">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              <h4>¿Cuánto dura una sesión?</h4>
-              <div class="faq-icon"></div>
-            </div>
-            <div class="faq-answer">
-              <p>Depende del tratamiento, generalmente entre 45 minutos y 2 horas. Durante la consulta inicial te explicaremos el tiempo exacto según tu plan personalizado.</p>
-            </div>
-          </div>
-          <div class="faq-item reveal">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              <h4>¿Dónde estáis ubicados?</h4>
-              <div class="faq-icon"></div>
-            </div>
-            <div class="faq-answer">
-              <p>Nos encontramos en C. Ecuador, 6, 45004 Toledo. Una zona residencial moderna con fácil aparcamiento en los alrededores.</p>
+          <div class="faq-quick-card">
+            <div class="faq-quick-num">03</div>
+            <div>
+              <h4>Reserva fácil</h4>
+              <p>Por WhatsApp o teléfono en 30 segundos</p>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Accordion -->
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Reserva</span>¿Cómo pido cita y cuánto tardo en conseguirla?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>Solo necesitas escribirnos por WhatsApp o llamar al 675 57 93 92. Te confirmamos disponibilidad en minutos. Reservamos tu cabina privada y el tiempo que necesitas — sin prisas, sin esperas.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Consulta</span>¿La primera consulta tiene coste?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>No. Tu primera consulta es completamente gratuita y sin compromiso. Evaluamos tu piel, escuchamos lo que buscas y te proponemos un plan personalizado. Si decides seguir adelante, genial. Si no, te vas con información útil.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Tratamiento</span>No sé qué tratamiento necesito, ¿me orientáis?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>Es lo más habitual. La mayoría de nuestras clientas vienen con una idea general — "quiero mejorar mi piel", "quiero uñas que duren" — y nosotras diseñamos el plan concreto. Para eso está la consulta: para escucharte y recomendarte exactamente lo que tu caso necesita.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Mantenimiento</span>¿Cada cuánto necesito volver para mantener los resultados?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>Depende del tratamiento. Las uñas con técnica brush duran más de un mes sin retoques. Las pestañas, entre 3 y 4 semanas. Los tratamientos faciales y láser tienen sus propios calendarios que personalizamos según tu caso. En tu primera visita te dejamos claro el ritmo de mantenimiento.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Láser</span>¿La depilación láser duele? ¿Funciona en todo tipo de piel?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>Nuestro equipo tiene sistema de enfriamiento integrado que hace la sesión muy tolerable — la mayoría de clientas lo describen como un pequeño pinchazo. En cuanto a tipos de piel, trabajamos con tecnología que se adapta a diferentes fototipos. En la consulta evaluamos tu caso concreto para confirmar que es seguro y eficaz para ti.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Tratamiento</span>¿Qué productos usáis y por qué?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>Trabajamos con Medik8, una marca de referencia dermatológica internacional con eficacia clínicamente probada. No elegimos productos por moda — los elegimos porque los resultados se notan y se mantienen. En tratamientos capilares y corporales, seleccionamos marcas con el mismo nivel de exigencia.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Consulta</span>¿Los tratamientos médicos los realiza personal sanitario?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>Siempre. Todos los tratamientos de medicina estética los realizan médicos certificados bajo protocolo clínico. No es negociable. Tu seguridad y tu resultado dependen de manos cualificadas.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ═══ CTA FINAL ═══ -->
   <section class="cta-final" id="contacto">
-    <div class="container">
-      <div class="cta-final-inner reveal">
-        <p class="section-label" style="color: rgba(28,28,28,0.5);">Reserva ahora</p>
-        <h2>Tu primera consulta es <em>gratuita</em></h2>
-        <p>Cuéntanos qué quieres mejorar. Nuestro equipo diseñará un plan personalizado hecho para ti, sin compromiso.</p>
-        <a href="https://wa.me/34675579392?text=Hola,%20me%20gustaría%20reservar%20una%20consulta%20gratuita" class="cta-final-btn" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Escríbenos por WhatsApp
-        </a>
-        <p class="cta-final-contact">También puedes llamarnos al <a href="tel:+34675579392">675 57 93 92</a> · C. Ecuador, 6, Toledo</p>
+    <div class="cta-final-split">
+
+      <!-- Left: dark panel with CTA -->
+      <div class="cta-final-left reveal">
+        <p class="section-label">Tu siguiente paso</p>
+        <h2>Reserva tu consulta <em>gratuita</em></h2>
+        <p>Cuéntanos qué quieres mejorar. Evaluamos tu caso, diseñamos un plan a medida y te explicamos todo — sin compromiso, sin presión.</p>
+        <div class="cta-final-actions">
+          <a href="https://wa.me/34675579392?text=Hola,%20me%20gustaría%20reservar%20una%20consulta%20gratuita" class="cta-final-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escríbenos por WhatsApp
+          </a>
+          <a href="tel:+34675579392" class="cta-final-btn-secondary">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Llamar al 675 57 93 92
+          </a>
+        </div>
       </div>
+
+      <!-- Right: warm panel with trust details -->
+      <div class="cta-final-right reveal">
+        <div class="cta-final-promise">
+          <h3>Lo que te espera en tu primera visita</h3>
+          <p>Un espacio privado donde escuchamos, evaluamos y te proponemos exactamente lo que necesitas. Sin fórmulas genéricas.</p>
+        </div>
+        <div class="cta-final-details">
+          <div class="cta-final-detail">
+            <div class="cta-final-detail-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <span>Consulta sin prisa</span>
+              <small>Todo el tiempo que necesites</small>
+            </div>
+          </div>
+          <div class="cta-final-detail">
+            <div class="cta-final-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <span>Equipo médico certificado</span>
+              <small>Protocolo clínico en cada tratamiento</small>
+            </div>
+          </div>
+          <div class="cta-final-detail">
+            <div class="cta-final-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div>
+              <span>4.9 estrellas en Google</span>
+              <small>Más de 100 reseñas reales</small>
+            </div>
+          </div>
+          <div class="cta-final-detail">
+            <div class="cta-final-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <span>C. Ecuador, 6 — Toledo</span>
+              <small>Zona residencial con aparcamiento fácil</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
