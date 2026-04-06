@@ -319,179 +319,361 @@
     }
 
     /* ═══════════════════════════════════════
-       HERO
+       HERO — EDITORIAL ASYMMETRIC
        ═══════════════════════════════════════ */
 
     .hero {
       position: relative;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       overflow: hidden;
-      background: var(--color-dark);
+      background: var(--color-bg);
     }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-    }
-
-    .hero-bg-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.45;
-      filter: brightness(0.7) saturate(0.85);
-      transform: scale(1.1);
-    }
-
-    /* Grain overlay */
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-      opacity: 0.4;
-      pointer-events: none;
-      z-index: 2;
-    }
-
+    /* ── Left column: content ── */
     .hero-content {
       position: relative;
       z-index: 3;
-      text-align: center;
-      max-width: 860px;
-      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem 6rem;
+      max-width: 680px;
+      margin-left: auto;
     }
 
-    .hero-label {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
+    .hero-tagline {
+      font-family: var(--font-accent);
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 300;
       color: var(--color-gold);
-      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.8rem;
       opacity: 0;
     }
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-size: clamp(2.6rem, 4.5vw, 4.2rem);
       font-weight: 400;
-      color: var(--color-white);
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-      opacity: 0;
+      color: var(--color-dark);
+      line-height: 1.08;
+      margin-bottom: 2rem;
+    }
+
+    .hero-h1-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .hero-h1-line span {
+      display: block;
+      transform: translateY(105%);
     }
 
     .hero h1 em {
-      font-style: italic;
       font-family: var(--font-accent);
+      font-style: italic;
       font-weight: 300;
       color: var(--color-gold);
+      font-size: 1.1em;
     }
 
-    .hero-sub {
+    .hero-body {
       font-family: var(--font-body);
-      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      font-size: 0.95rem;
       font-weight: 300;
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
       opacity: 0;
     }
 
-    .hero-cta {
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 0;
+      opacity: 0;
+    }
+
+    .hero-cta-primary {
       display: inline-block;
       font-family: var(--font-body);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--color-dark);
       background: var(--color-gold);
-      padding: 1.1rem 3rem;
-      transition: all 0.4s var(--ease-out-expo);
+      padding: 1rem 2.4rem;
+      transition: all 0.35s var(--ease-out-expo);
+    }
+
+    .hero-cta-primary:hover {
+      background: var(--color-dark);
+      color: var(--color-white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(28, 28, 28, 0.15);
+    }
+
+    .hero-cta-secondary {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .hero-cta-secondary::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--color-gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    .hero-cta-secondary:hover {
+      color: var(--color-dark);
+    }
+
+    .hero-cta-secondary:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* ── Right column: visual ── */
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.85) brightness(0.95);
+      transform: scale(1.05);
+      transition: transform 8s linear;
+    }
+
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--color-bg) 0%, transparent 12%),
+                  linear-gradient(to top, rgba(28,28,28,0.15) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* ── Grain overlay on image ── */
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ── Floating trust card ── */
+    .hero-trust-card {
+      position: absolute;
+      bottom: 3.5rem;
+      left: -3rem;
+      z-index: 10;
+      background: var(--color-white);
+      padding: 1.6rem 2rem;
+      box-shadow: 0 4px 40px rgba(28, 28, 28, 0.08);
+      max-width: 280px;
       opacity: 0;
     }
 
-    .hero-cta:hover {
-      background: var(--color-white);
-      color: var(--color-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 40px rgba(201, 169, 122, 0.3);
-    }
-
-    .hero-badge {
+    .hero-trust-card-stars {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 3.5rem;
-      flex-wrap: wrap;
-      opacity: 0;
+      gap: 0.3rem;
+      margin-bottom: 0.6rem;
     }
 
-    .hero-badge-item {
+    .hero-trust-card-stars span {
+      color: var(--color-gold);
+      font-size: 0.8rem;
+    }
+
+    .hero-trust-card-rating {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-left: 0.5rem;
+    }
+
+    .hero-trust-card-text {
       font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 400;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .hero-trust-card-author {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      color: var(--color-dark);
+      margin-top: 0.6rem;
     }
 
-    .hero-badge-item .star {
-      color: var(--color-gold);
-      font-size: 0.9rem;
-    }
-
-    .hero-badge-divider {
-      width: 1px;
-      height: 14px;
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Scroll indicator */
-    .hero-scroll {
+    /* ── Decorative vertical text ── */
+    .hero-vertical-text {
       position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
+      left: 2rem;
+      bottom: 4rem;
+      z-index: 4;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
       opacity: 0;
     }
 
-    .hero-scroll span {
-      font-family: var(--font-body);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    .hero-scroll-line {
+    .hero-vertical-text::before {
+      content: '';
+      display: block;
       width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--color-gold), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
+      height: 48px;
+      background: var(--color-gold);
+      margin: 0 auto 1rem;
     }
 
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
-      50% { opacity: 1; transform: scaleY(1); }
+    /* ── Services marquee ── */
+    .hero-marquee {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      overflow: hidden;
+      border-top: 1px solid rgba(28, 28, 28, 0.06);
+      background: rgba(248, 243, 238, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.9rem 0;
+    }
+
+    .hero-marquee-inner {
+      display: flex;
+      gap: 0;
+      animation: marqueeScroll 30s linear infinite;
+      width: max-content;
+    }
+
+    .hero-marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 2rem;
+      white-space: nowrap;
+    }
+
+    .hero-marquee-item span {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-dark);
+    }
+
+    .hero-marquee-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      flex-shrink: 0;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Hero mobile ── */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: 55vh auto;
+        min-height: auto;
+      }
+
+      .hero-visual {
+        order: -1;
+        min-height: 55vh;
+      }
+
+      .hero-visual::after {
+        background: linear-gradient(to top, var(--color-bg) 2%, transparent 30%);
+      }
+
+      .hero-content {
+        padding: 3rem 2rem 6rem;
+        max-width: 100%;
+        margin-left: 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 7vw, 3rem);
+      }
+
+      .hero-trust-card {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 2.5rem;
+        max-width: 100%;
+      }
+
+      .hero-vertical-text {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-content {
+        padding: 2rem 1.5rem 5.5rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+      }
+
+      .hero-cta-primary {
+        width: 100%;
+        text-align: center;
+      }
     }
 
     /* ═══════════════════════════════════════
@@ -507,21 +689,6 @@
         display: flex;
       }
 
-      .hero h1 {
-        font-size: clamp(2.2rem, 8vw, 3.5rem);
-      }
-
-      .hero-badge {
-        gap: 0.8rem;
-      }
-
-      .hero-badge-divider {
-        display: none;
-      }
-
-      .hero-badge-item {
-        font-size: 0.65rem;
-      }
     }
 
     @media (max-width: 480px) {
@@ -1849,36 +2016,73 @@
     <a href="https://wa.me/34675579392?text=Hola,%20me%20gustaría%20reservar%20una%20consulta" class="nav-cta" target="_blank" rel="noopener" style="margin-top:1rem;">Reservar</a>
   </div>
 
-  <!-- ═══ HERO ═══ -->
+  <!-- ═══ HERO — EDITORIAL ASYMMETRIC ═══ -->
   <section class="hero" id="hero">
-    <div class="hero-bg">
-      <img
-        src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1920&q=80&auto=format&fit=crop"
-        alt="Mujer en tratamiento de bienestar premium"
-        class="hero-bg-image"
-        id="heroBgImg"
-        loading="eager"
-      >
-    </div>
+
+    <!-- Decorative vertical text (left edge) -->
+    <div class="hero-vertical-text">Toledo · España</div>
+
+    <!-- Left: Copy -->
     <div class="hero-content">
-      <p class="hero-label">Centro de Estética y Medicina Estética · Toledo</p>
-      <h1>Tu nueva versión<br><em>empieza aquí</em></h1>
-      <p class="hero-sub">Tratamientos con respaldo médico real, productos de élite y una experiencia que no olvidarás.</p>
-      <a href="https://wa.me/34675579392?text=Hola,%20me%20gustaría%20reservar%20una%20consulta%20gratuita" class="hero-cta" target="_blank" rel="noopener">Reserva tu consulta gratuita →</a>
-      <div class="hero-badge">
-        <div class="hero-badge-item">
-          <span class="star">★</span> 4.9 en Google
-        </div>
-        <div class="hero-badge-divider"></div>
-        <div class="hero-badge-item">Médicos certificados</div>
-        <div class="hero-badge-divider"></div>
-        <div class="hero-badge-item">Productos Medik8</div>
+      <p class="hero-tagline">Centro de Estética & Medicina Estética</p>
+      <h1>
+        <span class="hero-h1-line"><span>Tu nueva</span></span>
+        <span class="hero-h1-line"><span>versión <em>empieza</em></span></span>
+        <span class="hero-h1-line"><span><em>aquí.</em></span></span>
+      </h1>
+      <p class="hero-body">Un espacio único en Toledo donde el bienestar integral se encuentra con el respaldo médico real. Doctores certificados, productos Medik8 y una experiencia diseñada para que no quieras irte.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/34675579392?text=Hola,%20me%20gustaría%20reservar%20una%20consulta%20gratuita" class="hero-cta-primary" target="_blank" rel="noopener">Reservar consulta gratuita →</a>
+        <a href="#tratamientos" class="hero-cta-secondary">Descubrir tratamientos</a>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>Descubrir</span>
-      <div class="hero-scroll-line"></div>
+
+    <!-- Right: Visual -->
+    <div class="hero-visual">
+      <img
+        src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&q=85&auto=format&fit=crop"
+        alt="Productos de skincare premium en ambiente de lujo"
+        class="hero-image-main"
+        loading="eager"
+        fetchpriority="high"
+      >
+      <div class="hero-grain"></div>
+
+      <!-- Floating trust card (overlaps columns) -->
+      <div class="hero-trust-card">
+        <div class="hero-trust-card-stars">
+          <span>★ ★ ★ ★ ★</span>
+          <span class="hero-trust-card-rating">4.9</span>
+        </div>
+        <p class="hero-trust-card-text">"Hacía falta un sitio así en Toledo. Personal profesional, decoración bonita y una atención increíble."</p>
+        <p class="hero-trust-card-author">— Carmen J. · Google Reviews</p>
+      </div>
     </div>
+
+    <!-- Services marquee (bottom edge, full width) -->
+    <div class="hero-marquee">
+      <div class="hero-marquee-inner">
+        <div class="hero-marquee-item">
+          <span>Medicina Estética</span><div class="hero-marquee-dot"></div>
+          <span>Tratamientos Faciales</span><div class="hero-marquee-dot"></div>
+          <span>Manicura & Pedicura</span><div class="hero-marquee-dot"></div>
+          <span>Masajes & Rituales</span><div class="hero-marquee-dot"></div>
+          <span>Productos Medik8</span><div class="hero-marquee-dot"></div>
+          <span>Cabinas Privadas</span><div class="hero-marquee-dot"></div>
+          <span>Doctores Certificados</span><div class="hero-marquee-dot"></div>
+        </div>
+        <div class="hero-marquee-item" aria-hidden="true">
+          <span>Medicina Estética</span><div class="hero-marquee-dot"></div>
+          <span>Tratamientos Faciales</span><div class="hero-marquee-dot"></div>
+          <span>Manicura & Pedicura</span><div class="hero-marquee-dot"></div>
+          <span>Masajes & Rituales</span><div class="hero-marquee-dot"></div>
+          <span>Productos Medik8</span><div class="hero-marquee-dot"></div>
+          <span>Cabinas Privadas</span><div class="hero-marquee-dot"></div>
+          <span>Doctores Certificados</span><div class="hero-marquee-dot"></div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- ═══ PILARES DE VALOR ═══ -->
@@ -2347,25 +2551,38 @@
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof gsap === 'undefined') return;
 
-      // Hero entrance
-      const heroTl = gsap.timeline({ delay: 0.3 });
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero entrance — editorial slide-reveal
+      const heroTl = gsap.timeline({ delay: 0.2, defaults: { ease: 'power4.out' } });
 
       heroTl
-        .to('.hero-label', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
-        .to('.hero h1', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5')
-        .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-        .to('.hero-cta', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
-        .to('.hero-badge', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
-        .to('.hero-scroll', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.2');
+        // Tagline fades in
+        .to('.hero-tagline', { opacity: 1, duration: 0.7 })
+        // H1 lines reveal one by one (clip from below)
+        .to('.hero-h1-line span', {
+          y: '0%',
+          duration: 1,
+          stagger: 0.12,
+          ease: 'power3.out'
+        }, '-=0.3')
+        // Body text
+        .to('.hero-body', { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+        // CTAs
+        .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
+        // Trust card floats in
+        .to('.hero-trust-card', { opacity: 1, x: 0, duration: 0.8 }, '-=0.3')
+        // Vertical text
+        .to('.hero-vertical-text', { opacity: 1, duration: 0.6 }, '-=0.5');
 
-      // Initial states for hero elements that will animate
-      gsap.set(['.hero-label', '.hero h1', '.hero-sub', '.hero-cta', '.hero-badge'], {
-        y: 30
-      });
+      // Set initial states
+      gsap.set('.hero-body', { y: 20 });
+      gsap.set('.hero-ctas', { y: 15 });
+      gsap.set('.hero-trust-card', { x: -20 });
 
-      // Parallax on hero image
-      gsap.to('.hero-bg-image', {
-        yPercent: 20,
+      // Subtle parallax on hero image
+      gsap.to('.hero-image-main', {
+        yPercent: 8,
         ease: 'none',
         scrollTrigger: {
           trigger: '.hero',
