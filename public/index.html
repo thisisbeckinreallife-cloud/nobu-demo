@@ -282,6 +282,42 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
 
+    /* Mobile menu - hidden by default */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--color-bg);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-out-expo);
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--color-gold);
+    }
+
     /* ═══════════════════════════════════════
        HERO
        ═══════════════════════════════════════ */
@@ -469,42 +505,6 @@
 
       .nav-toggle {
         display: flex;
-      }
-
-      /* Mobile menu overlay */
-      .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: var(--color-bg);
-        z-index: 999;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.4s var(--ease-out-expo);
-      }
-
-      .mobile-menu.open {
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .mobile-menu a {
-        font-family: var(--font-display);
-        font-size: 1.8rem;
-        font-weight: 400;
-        color: var(--color-dark);
-        transition: color 0.3s;
-      }
-
-      .mobile-menu a:hover {
-        color: var(--color-gold);
       }
 
       .hero h1 {
@@ -1853,8 +1853,8 @@
   <section class="hero" id="hero">
     <div class="hero-bg">
       <img
-        src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1920&q=80&auto=format&fit=crop"
-        alt="Tratamiento facial premium en ambiente de lujo"
+        src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1920&q=80&auto=format&fit=crop"
+        alt="Mujer en tratamiento de bienestar premium"
         class="hero-bg-image"
         id="heroBgImg"
         loading="eager"
@@ -1993,7 +1993,7 @@
         </div>
         <div class="authority-visual reveal">
           <div class="authority-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=700&q=80&auto=format&fit=crop" alt="Equipo médico profesional" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&auto=format&fit=crop" alt="Equipo médico profesional" loading="lazy">
           </div>
           <div class="authority-stat">
             <div class="authority-stat-number">4.9<span style="font-size:1.2rem;color:var(--color-dark);">★</span></div>
@@ -2013,11 +2013,11 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-item reveal" onclick="openLightbox(0)">
-          <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800&q=80&auto=format&fit=crop" alt="Interior del centro Nobú Beauty Club" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=800&q=80&auto=format&fit=crop" alt="Interior del centro Nobú Beauty Club" loading="lazy">
           <div class="gallery-item-overlay"><span>Ver</span></div>
         </div>
         <div class="gallery-item reveal" onclick="openLightbox(1)">
-          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80&auto=format&fit=crop" alt="Detalle de tratamiento facial" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop" alt="Detalle de tratamiento facial" loading="lazy">
           <div class="gallery-item-overlay"><span>Ver</span></div>
         </div>
         <div class="gallery-item reveal" onclick="openLightbox(2)">
@@ -2033,7 +2033,7 @@
           <div class="gallery-item-overlay"><span>Ver</span></div>
         </div>
         <div class="gallery-item reveal" onclick="openLightbox(5)">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop" alt="Ambiente cuidado del centro" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&auto=format&fit=crop" alt="Ambiente cuidado del centro" loading="lazy">
           <div class="gallery-item-overlay"><span>Ver</span></div>
         </div>
       </div>
