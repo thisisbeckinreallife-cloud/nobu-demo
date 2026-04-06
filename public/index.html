@@ -1718,187 +1718,336 @@
     }
 
     /* ═══════════════════════════════════════
-       SECCIÓN — RESEÑAS / PRUEBA SOCIAL
+       SECCIÓN — TESTIMONIOS (EDITORIAL)
        ═══════════════════════════════════════ */
 
-    .reviews {
-      padding: 8rem 0;
-      background: var(--color-bg);
-    }
-
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .reviews-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--color-dark);
-    }
-
-    .reviews-rating {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .reviews-rating-number {
-      font-family: var(--font-display);
-      font-size: 4rem;
-      font-weight: 400;
-      color: var(--color-dark);
-      line-height: 1;
-    }
-
-    .reviews-rating-stars {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.3rem;
-    }
-
-    .reviews-rating-stars .stars {
-      color: var(--color-gold);
-      font-size: 1.1rem;
-      letter-spacing: 0.15em;
-    }
-
-    .reviews-rating-stars span:last-child {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-    }
-
-    .reviews-carousel {
+    .testimonials {
+      padding: 7rem 0;
+      background: var(--color-dark);
       position: relative;
       overflow: hidden;
     }
 
-    .reviews-track {
-      display: flex;
-      gap: 1.5rem;
-      transition: transform 0.6s var(--ease-out-expo);
+    /* Subtle radial glow */
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201,169,122,0.05) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .review-card {
-      flex: 0 0 calc(33.333% - 1rem);
-      background: var(--color-white);
-      padding: 2.5rem;
+    /* ── Header row: left text + right rating ── */
+    .test-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .test-header-left .section-label {
+      color: var(--color-gold);
+    }
+
+    .test-header-left h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--color-white);
+      line-height: 1.1;
+    }
+
+    .test-header-left h2 em {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--color-gold);
+    }
+
+    .test-rating {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .test-rating-number {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 400;
+      color: var(--color-white);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .test-rating-stars {
+      color: var(--color-gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      margin-top: 0.3rem;
+    }
+
+    .test-rating-label {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.4rem;
+    }
+
+    /* ── Layout: hero quote left + supporting right ── */
+    .test-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1px;
+    }
+
+    /* ── Hero testimonial ── */
+    .test-hero {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: relative;
     }
 
-    .review-card::before {
+    .test-hero::before {
       content: '"';
       font-family: var(--font-display);
-      font-size: 4rem;
+      font-size: 10rem;
       color: var(--color-gold);
-      opacity: 0.3;
+      opacity: 0.08;
       position: absolute;
-      top: 1rem;
-      right: 1.5rem;
+      top: -0.5rem;
+      left: 1.5rem;
       line-height: 1;
+      pointer-events: none;
     }
 
-    .review-stars {
-      color: var(--color-gold);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.2rem;
-    }
-
-    .review-text {
-      font-size: 0.92rem;
-      line-height: 1.8;
-      color: var(--color-text-muted);
-      margin-bottom: 1.5rem;
+    .test-hero-quote {
+      font-family: var(--font-accent);
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-weight: 300;
       font-style: italic;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .review-author {
+    .test-hero-quote strong {
+      color: var(--color-gold);
+      font-weight: 400;
+    }
+
+    .test-author {
       display: flex;
       align-items: center;
+      gap: 1rem;
+    }
+
+    .test-author-initial {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(201,169,122,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-gold);
+    }
+
+    .test-author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .test-author-name {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.03em;
+    }
+
+    .test-author-source {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── Supporting quotes stack ── */
+    .test-supporting {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .test-quote {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2.2rem 2.5rem;
+      position: relative;
+      transition: background 0.4s;
+    }
+
+    .test-quote:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Keyword tag */
+    .test-keyword {
+      font-family: var(--font-body);
+      font-size: 0.56rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .test-keyword::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: var(--color-gold);
+      opacity: 0.5;
+    }
+
+    .test-quote-text {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .test-quote-text strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+    }
+
+    .test-quote .test-author {
       gap: 0.8rem;
     }
 
-    .review-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--color-gold);
+    .test-quote .test-author-initial {
+      width: 34px;
+      height: 34px;
+      font-size: 0.8rem;
+    }
+
+    .test-quote .test-author-name {
+      font-size: 0.72rem;
+    }
+
+    .test-quote .test-author-source {
+      font-size: 0.58rem;
+    }
+
+    /* ── Bottom strip: curated highlights ── */
+    .test-highlights {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 1px;
+      margin-top: 1px;
+    }
+
+    .test-highlight {
+      flex: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      transition: background 0.4s;
+    }
+
+    .test-highlight:hover {
+      background: rgba(201,169,122,0.06);
+    }
+
+    .test-highlight-value {
       font-family: var(--font-display);
-      font-size: 0.9rem;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--color-gold);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .test-highlight-label {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
       font-weight: 500;
-      color: var(--color-white);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
     }
 
-    .review-author-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-dark);
-    }
-
-    .review-author-source {
-      font-size: 0.7rem;
-      color: var(--color-text-muted);
-      margin-top: 0.15rem;
-    }
-
-    .reviews-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 3rem;
-    }
-
-    .reviews-nav-btn {
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--color-cream-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s var(--ease-out-expo);
-    }
-
-    .reviews-nav-btn:hover {
-      border-color: var(--color-gold);
-      background: var(--color-gold);
-    }
-
-    .reviews-nav-btn svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--color-dark);
-      fill: none;
-      stroke-width: 2;
-    }
-
-    .reviews-nav-btn:hover svg {
-      stroke: var(--color-white);
-    }
-
+    /* ── Responsive ── */
     @media (max-width: 900px) {
-      .review-card {
-        flex: 0 0 calc(50% - 0.75rem);
+      .test-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .test-rating {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .test-rating-number {
+        font-size: 3.5rem;
+      }
+
+      .test-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .test-hero {
+        padding: 2.5rem 2rem;
+      }
+
+      .test-highlights {
+        flex-direction: column;
       }
     }
 
-    @media (max-width: 600px) {
-      .review-card {
-        flex: 0 0 100%;
+    @media (max-width: 640px) {
+      .testimonials {
+        padding: 5rem 0;
       }
 
-      .reviews-rating-number {
-        font-size: 3rem;
+      .test-hero {
+        padding: 2rem 1.5rem;
+      }
+
+      .test-quote {
+        padding: 1.5rem;
+      }
+
+      .test-hero-quote {
+        font-size: 1.15rem;
       }
     }
 
@@ -2716,87 +2865,102 @@
     </div>
   </section>
 
-  <!-- ═══ RESEÑAS ═══ -->
-  <section class="reviews" id="opiniones">
+  <!-- ═══ TESTIMONIOS ═══ -->
+  <section class="testimonials" id="opiniones">
     <div class="container">
-      <div class="reviews-header reveal">
-        <p class="section-label">Opiniones reales</p>
-        <h2>Lo que dicen quienes ya lo <em>vivieron</em></h2>
-        <div class="reviews-rating">
-          <span class="reviews-rating-number" id="ratingCounter">0</span>
-          <div class="reviews-rating-stars">
-            <span class="stars">★★★★★</span>
-            <span>Valoración en Google</span>
+
+      <!-- Header: title left, rating right -->
+      <div class="test-header reveal">
+        <div class="test-header-left">
+          <p class="section-label">Opiniones verificadas</p>
+          <h2>Lo que dicen quienes<br>ya lo <em>vivieron</em></h2>
+        </div>
+        <div class="test-rating">
+          <div class="test-rating-number" id="ratingCounter">0</div>
+          <div>
+            <div class="test-rating-stars">★ ★ ★ ★ ★</div>
+            <div class="test-rating-label">Valoración en Google</div>
           </div>
         </div>
       </div>
-      <div class="reviews-carousel">
-        <div class="reviews-track" id="reviewsTrack">
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Un centro muy actual y súper recomendable. Decoración bonita, personal profesional, horario amplio. Hacía falta algo así en Toledo.</p>
-            <div class="review-author">
-              <div class="review-avatar">C</div>
-              <div>
-                <div class="review-author-name">Carmen J.</div>
-                <div class="review-author-source">Google Reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">El mejor centro de uñas y estética que he encontrado en Toledo. Concepto distinguido, trato excelente, amplia oferta de calidad.</p>
-            <div class="review-author">
-              <div class="review-avatar">B</div>
-              <div>
-                <div class="review-author-name">B. R.</div>
-                <div class="review-author-source">Google Reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Siempre muy amables. Las uñas las hacen con pincel y duran más de un mes intactas. Un plus enorme.</p>
-            <div class="review-author">
-              <div class="review-avatar">C</div>
-              <div>
-                <div class="review-author-name">Celia C.</div>
-                <div class="review-author-source">Google Reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Espacio acogedor y decorado con gusto. Me atendió Yohana y fue un placer. Sin duda, un lugar al que hay que volver.</p>
-            <div class="review-author">
-              <div class="review-avatar">S</div>
-              <div>
-                <div class="review-author-name">Sara T.</div>
-                <div class="review-author-source">Google Reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Usan productos top como Medik8. Aconsejan genial y te hacen sentir como una reina. Las mejores manicuras y pedicuras de todo Toledo.</p>
-            <div class="review-author">
-              <div class="review-avatar">S</div>
-              <div>
-                <div class="review-author-name">SGC</div>
-                <div class="review-author-source">Google Reviews</div>
-              </div>
+
+      <!-- Editorial grid: hero quote + supporting stack -->
+      <div class="test-grid">
+
+        <!-- Hero testimonial (largest, most emotional) -->
+        <div class="test-hero reveal">
+          <p class="test-hero-quote">"Usan productos top como Medik8. Te aconsejan genial y <strong>te hacen sentir como una reina</strong>. Las mejores manicuras y pedicuras de todo Toledo."</p>
+          <div class="test-author">
+            <div class="test-author-initial">S</div>
+            <div class="test-author-info">
+              <span class="test-author-name">SGC</span>
+              <span class="test-author-source">Google Reviews · ★★★★★</span>
             </div>
           </div>
         </div>
+
+        <!-- Supporting quotes -->
+        <div class="test-supporting">
+
+          <div class="test-quote reveal">
+            <div class="test-keyword">Precisión</div>
+            <p class="test-quote-text">"Las uñas las hacen con pincel y <strong>duran más de un mes intactas</strong>. Siempre muy amables. Un plus enorme."</p>
+            <div class="test-author">
+              <div class="test-author-initial">C</div>
+              <div class="test-author-info">
+                <span class="test-author-name">Celia C.</span>
+                <span class="test-author-source">Google Reviews · ★★★★★</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-quote reveal">
+            <div class="test-keyword">Confort</div>
+            <p class="test-quote-text">"Espacio <strong>acogedor y decorado con gusto</strong>. Me atendió Yohana y fue un placer. Sin duda, un lugar al que hay que volver."</p>
+            <div class="test-author">
+              <div class="test-author-initial">S</div>
+              <div class="test-author-info">
+                <span class="test-author-name">Sara T.</span>
+                <span class="test-author-source">Google Reviews · ★★★★★</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-quote reveal">
+            <div class="test-keyword">Confianza</div>
+            <p class="test-quote-text">"Un centro muy actual. <strong>Personal profesional</strong>, decoración bonita, horario amplio. Hacía falta un sitio así en Toledo."</p>
+            <div class="test-author">
+              <div class="test-author-initial">C</div>
+              <div class="test-author-info">
+                <span class="test-author-name">Carmen J.</span>
+                <span class="test-author-source">Google Reviews · ★★★★★</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="reviews-nav">
-        <button class="reviews-nav-btn" onclick="moveReviews(-1)">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button class="reviews-nav-btn" onclick="moveReviews(1)">
-          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+
+      <!-- Bottom highlight strip -->
+      <div class="test-highlights reveal">
+        <div class="test-highlight">
+          <div class="test-highlight-value">4.9★</div>
+          <div class="test-highlight-label">Valoración media</div>
+        </div>
+        <div class="test-highlight">
+          <div class="test-highlight-value">+1 mes</div>
+          <div class="test-highlight-label">Duración de uñas</div>
+        </div>
+        <div class="test-highlight">
+          <div class="test-highlight-value">Medik8</div>
+          <div class="test-highlight-label">Productos premium</div>
+        </div>
+        <div class="test-highlight">
+          <div class="test-highlight-value">100%</div>
+          <div class="test-highlight-label">Personal certificado</div>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -3118,54 +3282,6 @@
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') navigateLightbox(-1);
       if (e.key === 'ArrowRight') navigateLightbox(1);
-    });
-
-    // ── Reviews Carousel ──
-    let reviewIndex = 0;
-    const reviewsTrack = document.getElementById('reviewsTrack');
-
-    function getReviewsPerView() {
-      if (window.innerWidth <= 600) return 1;
-      if (window.innerWidth <= 900) return 2;
-      return 3;
-    }
-
-    function moveReviews(dir) {
-      const perView = getReviewsPerView();
-      const totalCards = document.querySelectorAll('.review-card').length;
-      const maxIndex = totalCards - perView;
-      reviewIndex = Math.max(0, Math.min(maxIndex, reviewIndex + dir));
-      const cardWidth = document.querySelector('.review-card').offsetWidth + 24; // gap
-      reviewsTrack.style.transform = `translateX(-${reviewIndex * cardWidth}px)`;
-    }
-
-    // Auto-play reviews
-    let reviewAutoplay = setInterval(() => {
-      const perView = getReviewsPerView();
-      const totalCards = document.querySelectorAll('.review-card').length;
-      if (reviewIndex >= totalCards - perView) {
-        reviewIndex = 0;
-        reviewsTrack.style.transform = `translateX(0)`;
-      } else {
-        moveReviews(1);
-      }
-    }, 4000);
-
-    document.querySelector('.reviews-carousel').addEventListener('mouseenter', () => {
-      clearInterval(reviewAutoplay);
-    });
-
-    document.querySelector('.reviews-carousel').addEventListener('mouseleave', () => {
-      reviewAutoplay = setInterval(() => {
-        const perView = getReviewsPerView();
-        const totalCards = document.querySelectorAll('.review-card').length;
-        if (reviewIndex >= totalCards - perView) {
-          reviewIndex = 0;
-          reviewsTrack.style.transform = `translateX(0)`;
-        } else {
-          moveReviews(1);
-        }
-      }, 4000);
     });
 
     // ── Rating Counter Animation ──
