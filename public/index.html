@@ -828,106 +828,269 @@
     }
 
     /* ═══════════════════════════════════════
-       SECCIÓN — PILARES DE VALOR
+       SECCIÓN — FILOSOFÍA / POR QUÉ ELEGIRNOS
        ═══════════════════════════════════════ */
 
-    .pillars {
-      padding: 8rem 0;
+    .philosophy {
+      padding: 9rem 0 8rem;
       background: var(--color-white);
+      overflow: hidden;
     }
 
-    .pillars-header {
-      text-align: center;
-      margin-bottom: 5rem;
-    }
-
-    .pillars-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--color-dark);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .pillars-grid {
+    .philosophy-intro {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 6rem;
     }
 
-    .pillar {
-      text-align: center;
-      padding: 3rem 2rem;
+    .philosophy-intro .section-label {
+      margin-bottom: 1.5rem;
+    }
+
+    .philosophy-intro h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      color: var(--color-dark);
+      line-height: 1.15;
+    }
+
+    .philosophy-intro-text {
+      padding-bottom: 0.3rem;
+    }
+
+    .philosophy-intro-text p {
+      font-family: var(--font-accent);
+      font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      max-width: 520px;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 1fr;
+      gap: 2px;
+    }
+
+    .philosophy-card {
+      padding: 3.5rem 2.8rem;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 340px;
+      transition: background 0.5s var(--ease-out-expo);
     }
 
-    .pillar::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 15%;
-      height: 70%;
-      width: 1px;
+    .philosophy-card:nth-child(1) {
+      background: var(--color-bg);
+    }
+
+    .philosophy-card:nth-child(2) {
+      background: var(--color-dark);
+      color: var(--color-white);
+    }
+
+    .philosophy-card:nth-child(2) .philosophy-card-num {
+      color: var(--color-gold);
+    }
+
+    .philosophy-card:nth-child(2) .philosophy-card-title {
+      color: var(--color-white);
+    }
+
+    .philosophy-card:nth-child(2) .philosophy-card-body {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .philosophy-card:nth-child(3) {
+      background: var(--color-nude);
+    }
+
+    .philosophy-card-num {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: var(--color-cream-dark);
+      line-height: 1;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .philosophy-card:nth-child(1) .philosophy-card-num {
+      color: var(--color-nude);
+    }
+
+    .philosophy-card:nth-child(3) .philosophy-card-num {
+      color: rgba(139, 77, 59, 0.2);
+    }
+
+    .philosophy-card-content {
+      margin-top: auto;
+    }
+
+    .philosophy-card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .philosophy-card-body {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+    }
+
+    /* Bottom row — 2 wide panels */
+    .philosophy-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 2px;
+    }
+
+    .philosophy-panel {
+      padding: 3.5rem 3rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .philosophy-panel:nth-child(1) {
+      background: var(--color-dark);
+    }
+
+    .philosophy-panel:nth-child(2) {
+      background: var(--color-bg);
+    }
+
+    .philosophy-panel-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .philosophy-panel:nth-child(1) .philosophy-panel-icon {
+      background: rgba(201, 169, 122, 0.12);
+    }
+
+    .philosophy-panel:nth-child(2) .philosophy-panel-icon {
       background: var(--color-cream-dark);
     }
 
-    .pillar:last-child::after {
-      display: none;
-    }
-
-    .pillar-icon {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto 2rem;
-      position: relative;
-    }
-
-    .pillar-icon svg {
-      width: 100%;
-      height: 100%;
-      stroke: var(--color-gold);
+    .philosophy-panel-icon svg {
+      width: 28px;
+      height: 28px;
       fill: none;
-      stroke-width: 1.2;
+      stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
-    .pillar h3 {
+    .philosophy-panel:nth-child(1) .philosophy-panel-icon svg {
+      stroke: var(--color-gold);
+    }
+
+    .philosophy-panel:nth-child(2) .philosophy-panel-icon svg {
+      stroke: var(--color-dark);
+    }
+
+    .philosophy-panel-title {
       font-family: var(--font-display);
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .philosophy-panel:nth-child(1) .philosophy-panel-title {
+      color: var(--color-white);
+    }
+
+    .philosophy-panel:nth-child(2) .philosophy-panel-title {
       color: var(--color-dark);
     }
 
-    .pillar p {
-      font-size: 0.92rem;
-      line-height: 1.75;
+    .philosophy-panel-body {
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .philosophy-panel:nth-child(1) .philosophy-panel-body {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .philosophy-panel:nth-child(2) .philosophy-panel-body {
       color: var(--color-text-muted);
-      max-width: 320px;
-      margin: 0 auto;
+    }
+
+    /* Signature line at bottom */
+    .philosophy-signature {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .philosophy-signature p {
+      font-family: var(--font-accent);
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      font-style: italic;
+      color: var(--color-text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .philosophy-signature span {
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: var(--color-gold);
+      vertical-align: middle;
+      margin: 0 1rem;
     }
 
     @media (max-width: 900px) {
-      .pillars-grid {
+      .philosophy {
+        padding: 5rem 0 4rem;
+      }
+
+      .philosophy-intro {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 2rem;
+        margin-bottom: 3.5rem;
       }
 
-      .pillar::after {
-        right: 15%;
-        left: 15%;
-        top: auto;
-        bottom: 0;
-        height: 1px;
-        width: 70%;
+      .philosophy-grid {
+        grid-template-columns: 1fr;
       }
 
-      .pillar:last-child::after {
-        display: none;
+      .philosophy-card {
+        min-height: auto;
+        padding: 2.8rem 2rem;
       }
 
-      .pillar {
-        padding: 2.5rem 1.5rem;
+      .philosophy-card-num {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .philosophy-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .philosophy-panel {
+        padding: 2.5rem 2rem;
+        gap: 1.8rem;
+      }
+
+      .philosophy-signature {
+        margin-top: 3rem;
       }
     }
 
@@ -2796,36 +2959,73 @@
     </div>
   </div>
 
-  <!-- ═══ PILARES DE VALOR ═══ -->
-  <section class="pillars">
+  <!-- ═══ FILOSOFÍA — POR QUÉ ELEGIRNOS ═══ -->
+  <section class="philosophy" id="filosofia">
     <div class="container">
-      <div class="pillars-header reveal">
-        <p class="section-label">Por qué elegirnos</p>
-        <h2>Tres razones que nos hacen <em>diferentes</em></h2>
-      </div>
-      <div class="pillars-grid">
-        <div class="pillar reveal">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 56 56"><path d="M28 8c-4 0-7 3-7 7v4c0 4 3 7 7 7s7-3 7-7v-4c0-4-3-7-7-7z"/><path d="M28 30c-9 0-16 4-16 9v5c0 2 1 4 3 4h26c2 0 3-2 3-4v-5c0-5-7-9-16-9z"/><circle cx="44" cy="14" r="3"/><path d="M44 20c-2 0-3.5.5-5 1.3"/><circle cx="12" cy="14" r="3"/><path d="M12 20c2 0 3.5.5 5 1.3"/></svg>
-          </div>
-          <h3>Respaldo Médico Real</h3>
-          <p>No somos un salón. Somos un equipo de médicos y especialistas certificados que cuidan tu piel con protocolo clínico.</p>
+
+      <!-- Intro — asymmetric header -->
+      <div class="philosophy-intro reveal">
+        <div>
+          <p class="section-label">Nuestra filosofía</p>
+          <h2>No es solo lo que hacemos.<br>Es <em>cómo</em> lo hacemos.</h2>
         </div>
-        <div class="pillar reveal">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 56 56"><path d="M28 6l5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"/></svg>
-          </div>
-          <h3>Productos de Élite</h3>
-          <p>Cada tratamiento usa marcas de referencia dermatológica internacional como Medik8. Porque los resultados duraderos empiezan con los ingredientes correctos.</p>
-        </div>
-        <div class="pillar reveal">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 56 56"><rect x="8" y="12" width="40" height="32" rx="4"/><path d="M8 20h40"/><circle cx="20" cy="32" r="4"/><circle cx="36" cy="32" r="4"/><path d="M24 32h8"/></svg>
-          </div>
-          <h3>Experiencia Única en Toledo</h3>
-          <p>Un espacio diseñado para que entres sintiéndote bien y salgas sintiéndote extraordinaria. Cabinas privadas, ambiente cuidado, atención que se nota.</p>
+        <div class="philosophy-intro-text">
+          <p>En Nobú cada detalle tiene intención. Desde los productos que elegimos hasta el silencio de nuestras cabinas privadas. No competimos por precio — competimos por la experiencia que te llevas.</p>
         </div>
       </div>
+
+      <!-- Top row — 3 editorial cards -->
+      <div class="philosophy-grid">
+        <div class="philosophy-card reveal">
+          <div class="philosophy-card-num">01</div>
+          <div class="philosophy-card-content">
+            <h3 class="philosophy-card-title">Precisión milimétrica</h3>
+            <p class="philosophy-card-body">Cada trazo de uña, cada línea de ceja, cada pulso de láser sigue un protocolo exacto. No improvisamos. Tu resultado se diseña antes de empezar.</p>
+          </div>
+        </div>
+        <div class="philosophy-card reveal">
+          <div class="philosophy-card-num">02</div>
+          <div class="philosophy-card-content">
+            <h3 class="philosophy-card-title">Gusto estético propio</h3>
+            <p class="philosophy-card-body">No seguimos tendencias que no resisten el tiempo. Nuestro criterio se entrena con formación continua y referencias internacionales. Lo que sale de aquí, se nota.</p>
+          </div>
+        </div>
+        <div class="philosophy-card reveal">
+          <div class="philosophy-card-num">03</div>
+          <div class="philosophy-card-content">
+            <h3 class="philosophy-card-title">Acabado premium, siempre</h3>
+            <p class="philosophy-card-body">Uñas con técnica brush que duran más de un mes. Pestañas que parecen naturales. Piel que habla por sí sola. No hay "suficientemente bien" — hay excelente o se repite.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom row — 2 wide panels -->
+      <div class="philosophy-bottom">
+        <div class="philosophy-panel reveal">
+          <div class="philosophy-panel-icon">
+            <svg viewBox="0 0 28 28"><path d="M14 3v22M3 14h22"/><circle cx="14" cy="14" r="10"/></svg>
+          </div>
+          <div>
+            <h3 class="philosophy-panel-title">Tratamiento personalizado</h3>
+            <p class="philosophy-panel-body">Sin fórmulas genéricas. Evaluamos tu piel, tu estilo, tu rutina. Cada servicio se adapta a ti porque ninguna clienta es igual a otra.</p>
+          </div>
+        </div>
+        <div class="philosophy-panel reveal">
+          <div class="philosophy-panel-icon">
+            <svg viewBox="0 0 28 28"><path d="M14 3l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+          </div>
+          <div>
+            <h3 class="philosophy-panel-title">La confianza de Toledo</h3>
+            <p class="philosophy-panel-body">4.9 estrellas en Google con más de 100 reseñas reales. Nuestras clientas vuelven — y traen a sus amigas. Eso no se compra, se gana.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signature line -->
+      <div class="philosophy-signature reveal">
+        <p><span></span> Donde la belleza se trata con criterio <span></span></p>
+      </div>
+
     </div>
   </section>
 
