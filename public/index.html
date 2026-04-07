@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nobú Beauty Club — Centro de Estética y Medicina Estética en Toledo</title>
   <meta name="description" content="Nobú Beauty Club — Centro de estética y medicina estética en Toledo. Doctores certificados, productos Medik8, manicuras con técnica brush. Consulta gratuita: 675 57 93 92.">
+  <meta name="theme-color" content="#8B4D3B">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/logo-nebu.png">
+  <link rel="apple-touch-icon" href="/images/logo-nebu.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nobú Beauty Club — Toledo">
+  <meta property="og:description" content="Centro de estética y medicina estética en Toledo. Doctores certificados, productos Medik8.">
+  <meta property="og:image" content="/images/logo-nebu.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
 
   <!-- Preconnect Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -188,19 +200,21 @@
     }
 
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--color-dark);
-      white-space: nowrap;
-      overflow: visible;
+      display: inline-flex;
+      align-items: center;
       flex-shrink: 0;
+      line-height: 0;
     }
 
-    .nav-logo span {
-      color: var(--color-gold);
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-logo:hover img {
+      opacity: 0.85;
     }
 
     .nav-links {
@@ -2864,13 +2878,17 @@
     }
 
     .cta-final-wordmark {
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
-      font-weight: 400;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.15);
-      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
+    }
+
+    .cta-final-wordmark img {
+      height: 80px;
+      width: auto;
+      display: block;
+      opacity: 0.85;
+      filter: drop-shadow(0 4px 24px rgba(139, 77, 59, 0.35));
     }
 
     .cta-final-wordmark span {
@@ -3177,7 +3195,7 @@
   <!-- ═══ NAVEGACIÓN ═══ -->
   <nav class="nav" id="mainNav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">NOB<span>Ú</span> BEAUTY CLUB</a>
+      <a href="#" class="nav-logo" aria-label="Nobú Beauty Club"><img src="/images/logo-nebu.png" alt="Nobú Beauty Club"></a>
       <ul class="nav-links">
         <li><a href="#tratamientos">Tratamientos</a></li>
         <li><a href="#equipo">Equipo</a></li>
@@ -3847,7 +3865,7 @@
       <div class="container">
         <div class="cta-final-strip-inner">
           <div class="cta-final-strip-line"></div>
-          <div class="cta-final-wordmark">NOB<span>Ú</span> BEAUTY CLUB</div>
+          <div class="cta-final-wordmark"><img src="/images/logo-nebu.png" alt="Nobú Beauty Club"></div>
           <div class="cta-final-strip-line"></div>
         </div>
       </div>
