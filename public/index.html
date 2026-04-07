@@ -499,10 +499,16 @@
     }
 
     /* ── Floating trust card ── */
-    .hero-trust-card {
+    .hero-trust-card-wrap {
       position: absolute;
       bottom: 7rem;
-      left: -3rem;
+      left: calc(50% - 3rem);
+      z-index: 10;
+      pointer-events: none;
+    }
+    .hero-trust-card-wrap > .hero-trust-card { pointer-events: auto; }
+    .hero-trust-card {
+      position: relative;
       z-index: 10;
       background: var(--color-white);
       padding: 1.4rem 1.8rem 1.5rem;
@@ -688,11 +694,17 @@
         font-size: clamp(2.2rem, 7vw, 3rem);
       }
 
+      .hero-trust-card-wrap {
+        position: static;
+        bottom: auto;
+        left: auto;
+        padding: 0 2rem;
+        margin-top: 2.5rem;
+      }
       .hero-trust-card {
         position: relative;
         bottom: auto;
         left: auto;
-        margin-top: 2.5rem;
         max-width: 100%;
       }
 
@@ -3223,8 +3235,10 @@
         fetchpriority="high"
       >
       <div class="hero-grain"></div>
+    </div>
 
-      <!-- Floating trust card (overlaps columns) -->
+    <!-- Floating trust card (overlaps columns) -->
+    <div class="hero-trust-card-wrap">
       <div class="hero-trust-card">
         <div class="hero-trust-card-header">
           <div class="hero-trust-card-google">
