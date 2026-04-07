@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nobú Beauty Club — Centro de Estética y Medicina Estética en Toledo</title>
-  <meta name="description" content="Centro de estética y medicina estética en Toledo. Tratamientos con respaldo médico real, productos Medik8 y una experiencia premium. ★ 4.9 en Google.">
+  <meta name="description" content="Nobú Beauty Club — Centro de estética y medicina estética en Toledo. Doctores certificados, productos Medik8, manicuras con técnica brush. Consulta gratuita: 675 57 93 92.">
 
   <!-- Preconnect Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,10 +189,14 @@
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 0.95rem;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
       color: var(--color-dark);
+      white-space: nowrap;
+      overflow: visible;
+      flex-shrink: 0;
     }
 
     .nav-logo span {
@@ -429,7 +433,12 @@
       color: var(--color-text-muted);
       position: relative;
       padding-bottom: 2px;
-      transition: color 0.3s;
+      opacity: 0.7;
+      transition: color 0.3s, opacity 0.3s;
+    }
+
+    .hero-cta-secondary:hover {
+      opacity: 1;
     }
 
     .hero-cta-secondary::after {
@@ -585,8 +594,13 @@
     .hero-marquee-inner {
       display: flex;
       gap: 0;
-      animation: marqueeScroll 30s linear infinite;
+      animation: marqueeScroll 35s linear infinite;
       width: max-content;
+      will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-marquee-inner { animation: none; }
     }
 
     .hero-marquee-item {
@@ -1730,7 +1744,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr;
-      grid-template-rows: 320px 280px;
+      grid-template-rows: 300px 300px;
       gap: 4px;
     }
 
@@ -3036,7 +3050,7 @@
   <!-- ═══ NAVEGACIÓN ═══ -->
   <nav class="nav" id="mainNav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">NOB<span>Ú</span></a>
+      <a href="#" class="nav-logo">NOB<span>Ú</span> BEAUTY CLUB</a>
       <ul class="nav-links">
         <li><a href="#tratamientos">Tratamientos</a></li>
         <li><a href="#equipo">Equipo</a></li>
@@ -3210,28 +3224,6 @@
           <div class="philosophy-card-content">
             <h3 class="philosophy-card-title">Acabado premium, siempre</h3>
             <p class="philosophy-card-body">Uñas con técnica brush que duran más de un mes. Pestañas que parecen naturales. Piel que habla por sí sola. No hay "suficientemente bien" — hay excelente o se repite.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom row — 2 wide panels -->
-      <div class="philosophy-bottom">
-        <div class="philosophy-panel reveal">
-          <div class="philosophy-panel-icon">
-            <svg viewBox="0 0 28 28"><path d="M14 3v22M3 14h22"/><circle cx="14" cy="14" r="10"/></svg>
-          </div>
-          <div>
-            <h3 class="philosophy-panel-title">Tratamiento personalizado</h3>
-            <p class="philosophy-panel-body">Sin fórmulas genéricas. Evaluamos tu piel, tu estilo, tu rutina. Cada servicio se adapta a ti porque ninguna clienta es igual a otra.</p>
-          </div>
-        </div>
-        <div class="philosophy-panel reveal">
-          <div class="philosophy-panel-icon">
-            <svg viewBox="0 0 28 28"><path d="M14 3l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
-          </div>
-          <div>
-            <h3 class="philosophy-panel-title">La confianza de Toledo</h3>
-            <p class="philosophy-panel-body">4.9 estrellas en Google con más de 100 reseñas reales. Nuestras clientas vuelven — y traen a sus amigas. Eso no se compra, se gana.</p>
           </div>
         </div>
       </div>
@@ -3421,19 +3413,44 @@
           </div>
         </div>
 
-        <!-- 3. Brand panel -->
-        <div class="gallery-brand">
-          <span class="gallery-brand-name">NOBÚ</span>
-          <div class="gallery-brand-line"></div>
-          <span class="gallery-brand-sub">Beauty Club</span>
-          <span class="gallery-brand-tagline">Toledo, desde el corazón</span>
+        <!-- 3. Skincare detail -->
+        <div class="gallery-cell reveal" onclick="openLightbox(2)">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=85&auto=format&fit=crop" alt="Tratamiento facial premium — piel cuidada" loading="lazy">
+          <div class="gallery-cell-overlay">
+            <span class="gallery-cell-caption">Tratamiento facial</span>
+          </div>
+          <div class="gallery-cell-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </div>
         </div>
 
-        <!-- 4. Lounge area (wide) -->
-        <div class="gallery-cell gallery-cell--wide reveal" onclick="openLightbox(2)">
+        <!-- 4. Lounge area -->
+        <div class="gallery-cell reveal" onclick="openLightbox(3)">
           <img src="https://lh3.googleusercontent.com/p/AF1QipNe_tEBh5SrEhiRGnJDAb0hZpTVXGD62a5MN2Ew=s1360-w1360-h1020" alt="Zona de espera y relax — sofá, decoración cuidada" loading="lazy">
           <div class="gallery-cell-overlay">
             <span class="gallery-cell-caption">Zona de relax</span>
+          </div>
+          <div class="gallery-cell-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- 5. Brow / lash detail -->
+        <div class="gallery-cell reveal" onclick="openLightbox(4)">
+          <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=1200&q=85&auto=format&fit=crop" alt="Diseño de cejas y pestañas — atelier" loading="lazy">
+          <div class="gallery-cell-overlay">
+            <span class="gallery-cell-caption">Cejas &amp; pestañas</span>
+          </div>
+          <div class="gallery-cell-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- 6. Spa ambient -->
+        <div class="gallery-cell reveal" onclick="openLightbox(5)">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&q=85&auto=format&fit=crop" alt="Cabina privada — ambiente spa premium" loading="lazy">
+          <div class="gallery-cell-overlay">
+            <span class="gallery-cell-caption">Cabina privada</span>
           </div>
           <div class="gallery-cell-icon">
             <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
@@ -3455,7 +3472,7 @@
           <h2>Lo que dicen quienes<br>ya lo <em>vivieron</em></h2>
         </div>
         <div class="test-rating">
-          <div class="test-rating-number" id="ratingCounter">0</div>
+          <div class="test-rating-number" id="ratingCounter" data-start="4.0" data-end="4.9" data-duration="1500">4.9</div>
           <div>
             <div class="test-rating-stars">★ ★ ★ ★ ★</div>
             <div class="test-rating-label">Valoración en Google</div>
@@ -3592,6 +3609,15 @@
         </div>
         <div class="faq-item reveal">
           <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Tratamiento</span>¿Cuánto tiempo tarda una manicura o pedicura?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>Las manicuras con técnica brush duran entre 45 y 75 minutos, dependiendo del diseño y acabado. Las pedicuras entre 60 y 90 minutos. Reservamos el tiempo completo para que no haya prisas — tu cita no tiene límite de tiempo forzado.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
             <h4><span class="faq-tag">Consulta</span>¿La primera consulta tiene coste?</h4>
             <div class="faq-icon"></div>
           </div>
@@ -3721,7 +3747,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2024 Nobú Beauty Club · Toledo, España</p>
+        <p>© 2025 Nobú Beauty Club · Toledo, España</p>
         <p>Diseñado con ✦ en Toledo · <a href="#">Política de privacidad</a> · <a href="#">Aviso legal</a></p>
       </div>
     </div>
@@ -3744,7 +3770,7 @@
     <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">
       <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <div class="lightbox-counter" id="lightboxCounter">1 / 3</div>
+    <div class="lightbox-counter" id="lightboxCounter">1 / 6</div>
   </div>
 
   <script>
@@ -3938,32 +3964,29 @@
     });
 
     // ── Rating Counter Animation ──
-    const ratingEl = document.getElementById('ratingCounter');
-    let ratingAnimated = false;
-
-    const ratingObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !ratingAnimated) {
-          ratingAnimated = true;
-          animateCounter(ratingEl, 0, 4.9, 1500);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    ratingObserver.observe(ratingEl);
-
-    function animateCounter(el, start, end, duration) {
+    function animateCounter(el) {
+      if (el.dataset.animated) return;
+      el.dataset.animated = 'true';
+      const start = parseFloat(el.dataset.start || '4.0');
+      const end = parseFloat(el.dataset.end || '4.9');
+      const duration = parseInt(el.dataset.duration || '1500');
       const startTime = performance.now();
-      function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4); // ease-out quart
-        const current = start + (end - start) * eased;
-        el.textContent = current.toFixed(1);
+      function update(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        el.textContent = (start + (end - start) * eased).toFixed(1);
         if (progress < 1) requestAnimationFrame(update);
       }
       requestAnimationFrame(update);
     }
+
+    const ratingObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) animateCounter(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.test-rating-number, .counter-rating').forEach(el => ratingObserver.observe(el));
 
     // ── FAQ Accordion ──
     function toggleFaq(questionEl) {
