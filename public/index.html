@@ -501,34 +501,62 @@
     /* ── Floating trust card ── */
     .hero-trust-card {
       position: absolute;
-      bottom: 3.5rem;
+      bottom: 7rem;
       left: -3rem;
       z-index: 10;
       background: var(--color-white);
-      padding: 1.6rem 2rem;
-      box-shadow: 0 4px 40px rgba(28, 28, 28, 0.08);
-      max-width: 280px;
+      padding: 1.4rem 1.8rem 1.5rem;
+      box-shadow: 0 12px 48px rgba(28, 28, 28, 0.12);
+      max-width: 290px;
       opacity: 0;
+      border-top: 2px solid var(--color-gold);
+    }
+
+    .hero-trust-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(28, 28, 28, 0.06);
+    }
+
+    .hero-trust-card-google {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-trust-card-google svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hero-trust-card-google-text {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--color-dark);
     }
 
     .hero-trust-card-stars {
       display: flex;
       align-items: center;
-      gap: 0.3rem;
-      margin-bottom: 0.6rem;
+      gap: 0.4rem;
     }
 
-    .hero-trust-card-stars span {
+    .hero-trust-card-stars span:first-child {
       color: var(--color-gold);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
     }
 
     .hero-trust-card-rating {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 500;
       color: var(--color-dark);
-      margin-left: 0.5rem;
     }
 
     .hero-trust-card-text {
@@ -544,10 +572,10 @@
       font-family: var(--font-body);
       font-size: 0.68rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: 0.06em;
       color: var(--color-dark);
-      margin-top: 0.6rem;
+      margin-top: 0.7rem;
+      text-transform: none;
     }
 
     /* ── Decorative vertical text ── */
@@ -2115,6 +2143,93 @@
       margin-top: 0.4rem;
     }
 
+    /* ── Google badge ── */
+    .test-google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      padding: 0.5rem 0.9rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+    }
+
+    .test-google-badge svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .test-google-badge-text {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.04em;
+    }
+
+    .test-google-badge-text strong {
+      color: var(--color-white);
+      font-weight: 600;
+    }
+
+    /* ── Author source with Google icon ── */
+    .test-author-google {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .test-author-google svg {
+      width: 11px;
+      height: 11px;
+      flex-shrink: 0;
+    }
+
+    /* ── See all reviews link ── */
+    .test-google-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    .test-google-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.9rem 1.6rem;
+      background: var(--color-white);
+      color: var(--color-dark);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .test-google-cta a:hover {
+      background: var(--color-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201, 169, 122, 0.25);
+    }
+
+    .test-google-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .test-google-cta .arrow {
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .test-google-cta a:hover .arrow {
+      transform: translateX(3px);
+    }
+
     /* ── Layout: hero quote left + supporting right ── */
     .test-grid {
       display: grid;
@@ -3111,12 +3226,18 @@
 
       <!-- Floating trust card (overlaps columns) -->
       <div class="hero-trust-card">
-        <div class="hero-trust-card-stars">
-          <span>★ ★ ★ ★ ★</span>
-          <span class="hero-trust-card-rating">4.9</span>
+        <div class="hero-trust-card-header">
+          <div class="hero-trust-card-google">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            <span class="hero-trust-card-google-text">Google Reviews</span>
+          </div>
+          <div class="hero-trust-card-stars">
+            <span>★★★★★</span>
+            <span class="hero-trust-card-rating">4.9</span>
+          </div>
         </div>
         <p class="hero-trust-card-text">"Hacía falta un sitio así en Toledo. Personal profesional, decoración bonita y una atención increíble."</p>
-        <p class="hero-trust-card-author">— Carmen J. · Google Reviews</p>
+        <p class="hero-trust-card-author">— Carmen J. · Verificada en Google</p>
       </div>
     </div>
 
@@ -3393,7 +3514,7 @@
 
         <!-- 1. Hero: Nail station with arches (best interior shot) -->
         <div class="gallery-cell gallery-cell--hero reveal" onclick="openLightbox(0)">
-          <img src="https://lh3.googleusercontent.com/p/AF1QipOq1svFGXJ_L-wrM80E56VLJQwXgCR8hGH2Iyou=s1360-w1360-h1020" alt="Estación de manicura con arcos decorativos — Nobú Beauty Club" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1400&q=85&auto=format&fit=crop" alt="Estación de manicura — Nobú Beauty Club" loading="lazy">
           <div class="gallery-cell-overlay">
             <span class="gallery-cell-caption">Estación de manicura</span>
           </div>
@@ -3404,7 +3525,7 @@
 
         <!-- 2. Nail detail: nude polka dots -->
         <div class="gallery-cell reveal" onclick="openLightbox(1)">
-          <img src="https://lh3.googleusercontent.com/p/AF1QipP3F_TNqiFn5k-Mb0oqj3Iaj-8DjpQFqx8Dl2Gi=s1360-w1360-h1020" alt="Manicura nude con detalle de puntos — técnica de pincel" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=1200&q=85&auto=format&fit=crop" alt="Detalle de manicura premium — técnica de pincel" loading="lazy">
           <div class="gallery-cell-overlay">
             <span class="gallery-cell-caption">Técnica de pincel</span>
           </div>
@@ -3426,7 +3547,7 @@
 
         <!-- 4. Lounge area -->
         <div class="gallery-cell reveal" onclick="openLightbox(3)">
-          <img src="https://lh3.googleusercontent.com/p/AF1QipNe_tEBh5SrEhiRGnJDAb0hZpTVXGD62a5MN2Ew=s1360-w1360-h1020" alt="Zona de espera y relax — sofá, decoración cuidada" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200&q=85&auto=format&fit=crop" alt="Zona de espera y relax — ambiente cuidado" loading="lazy">
           <div class="gallery-cell-overlay">
             <span class="gallery-cell-caption">Zona de relax</span>
           </div>
@@ -3476,6 +3597,10 @@
           <div>
             <div class="test-rating-stars">★ ★ ★ ★ ★</div>
             <div class="test-rating-label">Valoración en Google</div>
+            <div class="test-google-badge">
+              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+              <span>Reseñas verificadas en Google</span>
+            </div>
           </div>
         </div>
       </div>
@@ -3490,7 +3615,7 @@
             <div class="test-author-initial">S</div>
             <div class="test-author-info">
               <span class="test-author-name">SGC</span>
-              <span class="test-author-source">Google Reviews · ★★★★★</span>
+              <span class="test-author-source test-author-google"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Reseña verificada · ★★★★★</span>
             </div>
           </div>
         </div>
@@ -3505,7 +3630,7 @@
               <div class="test-author-initial">C</div>
               <div class="test-author-info">
                 <span class="test-author-name">Celia C.</span>
-                <span class="test-author-source">Google Reviews · ★★★★★</span>
+                <span class="test-author-source test-author-google"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Reseña verificada · ★★★★★</span>
               </div>
             </div>
           </div>
@@ -3517,7 +3642,7 @@
               <div class="test-author-initial">S</div>
               <div class="test-author-info">
                 <span class="test-author-name">Sara T.</span>
-                <span class="test-author-source">Google Reviews · ★★★★★</span>
+                <span class="test-author-source test-author-google"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Reseña verificada · ★★★★★</span>
               </div>
             </div>
           </div>
@@ -3529,7 +3654,7 @@
               <div class="test-author-initial">C</div>
               <div class="test-author-info">
                 <span class="test-author-name">Carmen J.</span>
-                <span class="test-author-source">Google Reviews · ★★★★★</span>
+                <span class="test-author-source test-author-google"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Reseña verificada · ★★★★★</span>
               </div>
             </div>
           </div>
@@ -3555,6 +3680,13 @@
           <div class="test-highlight-value">100%</div>
           <div class="test-highlight-label">Personal certificado</div>
         </div>
+      </div>
+
+      <div class="test-google-cta reveal">
+        <a href="https://www.google.com/search?q=Nob%C3%BA+Beauty+Club+Toledo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+          Ver todas las reseñas en Google →
+        </a>
       </div>
 
     </div>
