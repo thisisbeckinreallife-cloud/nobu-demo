@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nobú Beauty Club — Centro de Estética y Medicina Estética en Toledo</title>
-  <meta name="description" content="Centro de estética y medicina estética en Toledo. Tratamientos con respaldo médico real, productos Medik8 y una experiencia premium. ★ 4.9 en Google.">
+  <meta name="description" content="Nobú Beauty Club — Centro de estética y medicina estética en Toledo. Doctores certificados, productos Medik8, manicuras con técnica brush. Consulta gratuita: 675 57 93 92.">
 
   <!-- Preconnect Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,10 +189,14 @@
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 0.95rem;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
       color: var(--color-dark);
+      white-space: nowrap;
+      overflow: visible;
+      flex-shrink: 0;
     }
 
     .nav-logo span {
@@ -429,7 +433,12 @@
       color: var(--color-text-muted);
       position: relative;
       padding-bottom: 2px;
-      transition: color 0.3s;
+      opacity: 0.7;
+      transition: color 0.3s, opacity 0.3s;
+    }
+
+    .hero-cta-secondary:hover {
+      opacity: 1;
     }
 
     .hero-cta-secondary::after {
@@ -490,36 +499,70 @@
     }
 
     /* ── Floating trust card ── */
-    .hero-trust-card {
+    .hero-trust-card-wrap {
       position: absolute;
-      bottom: 3.5rem;
-      left: -3rem;
+      bottom: 7rem;
+      left: calc(50% - 3rem);
+      z-index: 10;
+      pointer-events: none;
+    }
+    .hero-trust-card-wrap > .hero-trust-card { pointer-events: auto; }
+    .hero-trust-card {
+      position: relative;
       z-index: 10;
       background: var(--color-white);
-      padding: 1.6rem 2rem;
-      box-shadow: 0 4px 40px rgba(28, 28, 28, 0.08);
-      max-width: 280px;
+      padding: 1.4rem 1.8rem 1.5rem;
+      box-shadow: 0 12px 48px rgba(28, 28, 28, 0.12);
+      max-width: 290px;
       opacity: 0;
+      border-top: 2px solid var(--color-gold);
+    }
+
+    .hero-trust-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(28, 28, 28, 0.06);
+    }
+
+    .hero-trust-card-google {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-trust-card-google svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hero-trust-card-google-text {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--color-dark);
     }
 
     .hero-trust-card-stars {
       display: flex;
       align-items: center;
-      gap: 0.3rem;
-      margin-bottom: 0.6rem;
+      gap: 0.4rem;
     }
 
-    .hero-trust-card-stars span {
+    .hero-trust-card-stars span:first-child {
       color: var(--color-gold);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
     }
 
     .hero-trust-card-rating {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 500;
       color: var(--color-dark);
-      margin-left: 0.5rem;
     }
 
     .hero-trust-card-text {
@@ -535,10 +578,10 @@
       font-family: var(--font-body);
       font-size: 0.68rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: 0.06em;
       color: var(--color-dark);
-      margin-top: 0.6rem;
+      margin-top: 0.7rem;
+      text-transform: none;
     }
 
     /* ── Decorative vertical text ── */
@@ -585,8 +628,13 @@
     .hero-marquee-inner {
       display: flex;
       gap: 0;
-      animation: marqueeScroll 30s linear infinite;
+      animation: marqueeScroll 35s linear infinite;
       width: max-content;
+      will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-marquee-inner { animation: none; }
     }
 
     .hero-marquee-item {
@@ -646,11 +694,17 @@
         font-size: clamp(2.2rem, 7vw, 3rem);
       }
 
+      .hero-trust-card-wrap {
+        position: static;
+        bottom: auto;
+        left: auto;
+        padding: 0 2rem;
+        margin-top: 2.5rem;
+      }
       .hero-trust-card {
         position: relative;
         bottom: auto;
         left: auto;
-        margin-top: 2.5rem;
         max-width: 100%;
       }
 
@@ -1730,7 +1784,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr;
-      grid-template-rows: 320px 280px;
+      grid-template-rows: 300px 300px;
       gap: 4px;
     }
 
@@ -2099,6 +2153,93 @@
       text-transform: uppercase;
       color: rgba(255,255,255,0.35);
       margin-top: 0.4rem;
+    }
+
+    /* ── Google badge ── */
+    .test-google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      padding: 0.5rem 0.9rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+    }
+
+    .test-google-badge svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .test-google-badge-text {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.04em;
+    }
+
+    .test-google-badge-text strong {
+      color: var(--color-white);
+      font-weight: 600;
+    }
+
+    /* ── Author source with Google icon ── */
+    .test-author-google {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .test-author-google svg {
+      width: 11px;
+      height: 11px;
+      flex-shrink: 0;
+    }
+
+    /* ── See all reviews link ── */
+    .test-google-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    .test-google-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.9rem 1.6rem;
+      background: var(--color-white);
+      color: var(--color-dark);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .test-google-cta a:hover {
+      background: var(--color-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201, 169, 122, 0.25);
+    }
+
+    .test-google-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .test-google-cta .arrow {
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .test-google-cta a:hover .arrow {
+      transform: translateX(3px);
     }
 
     /* ── Layout: hero quote left + supporting right ── */
@@ -3036,7 +3177,7 @@
   <!-- ═══ NAVEGACIÓN ═══ -->
   <nav class="nav" id="mainNav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">NOB<span>Ú</span></a>
+      <a href="#" class="nav-logo">NOB<span>Ú</span> BEAUTY CLUB</a>
       <ul class="nav-links">
         <li><a href="#tratamientos">Tratamientos</a></li>
         <li><a href="#equipo">Equipo</a></li>
@@ -3094,15 +3235,23 @@
         fetchpriority="high"
       >
       <div class="hero-grain"></div>
+    </div>
 
-      <!-- Floating trust card (overlaps columns) -->
+    <!-- Floating trust card (overlaps columns) -->
+    <div class="hero-trust-card-wrap">
       <div class="hero-trust-card">
-        <div class="hero-trust-card-stars">
-          <span>★ ★ ★ ★ ★</span>
-          <span class="hero-trust-card-rating">4.9</span>
+        <div class="hero-trust-card-header">
+          <div class="hero-trust-card-google">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            <span class="hero-trust-card-google-text">Google Reviews</span>
+          </div>
+          <div class="hero-trust-card-stars">
+            <span>★★★★★</span>
+            <span class="hero-trust-card-rating">4.9</span>
+          </div>
         </div>
         <p class="hero-trust-card-text">"Hacía falta un sitio así en Toledo. Personal profesional, decoración bonita y una atención increíble."</p>
-        <p class="hero-trust-card-author">— Carmen J. · Google Reviews</p>
+        <p class="hero-trust-card-author">— Carmen J. · Verificada en Google</p>
       </div>
     </div>
 
@@ -3210,28 +3359,6 @@
           <div class="philosophy-card-content">
             <h3 class="philosophy-card-title">Acabado premium, siempre</h3>
             <p class="philosophy-card-body">Uñas con técnica brush que duran más de un mes. Pestañas que parecen naturales. Piel que habla por sí sola. No hay "suficientemente bien" — hay excelente o se repite.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom row — 2 wide panels -->
-      <div class="philosophy-bottom">
-        <div class="philosophy-panel reveal">
-          <div class="philosophy-panel-icon">
-            <svg viewBox="0 0 28 28"><path d="M14 3v22M3 14h22"/><circle cx="14" cy="14" r="10"/></svg>
-          </div>
-          <div>
-            <h3 class="philosophy-panel-title">Tratamiento personalizado</h3>
-            <p class="philosophy-panel-body">Sin fórmulas genéricas. Evaluamos tu piel, tu estilo, tu rutina. Cada servicio se adapta a ti porque ninguna clienta es igual a otra.</p>
-          </div>
-        </div>
-        <div class="philosophy-panel reveal">
-          <div class="philosophy-panel-icon">
-            <svg viewBox="0 0 28 28"><path d="M14 3l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
-          </div>
-          <div>
-            <h3 class="philosophy-panel-title">La confianza de Toledo</h3>
-            <p class="philosophy-panel-body">4.9 estrellas en Google con más de 100 reseñas reales. Nuestras clientas vuelven — y traen a sus amigas. Eso no se compra, se gana.</p>
           </div>
         </div>
       </div>
@@ -3372,7 +3499,7 @@
         </div>
         <div class="authority-visual reveal">
           <div class="authority-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&auto=format&fit=crop" alt="Equipo médico profesional" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=85&auto=format&fit=crop" alt="Profesional sanitario realizando tratamiento facial" loading="lazy">
           </div>
           <div class="authority-stat">
             <div class="authority-stat-number">4.9<span style="font-size:1.2rem;color:var(--color-dark);">★</span></div>
@@ -3401,7 +3528,7 @@
 
         <!-- 1. Hero: Nail station with arches (best interior shot) -->
         <div class="gallery-cell gallery-cell--hero reveal" onclick="openLightbox(0)">
-          <img src="https://lh3.googleusercontent.com/p/AF1QipOq1svFGXJ_L-wrM80E56VLJQwXgCR8hGH2Iyou=s1360-w1360-h1020" alt="Estación de manicura con arcos decorativos — Nobú Beauty Club" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1400&q=85&auto=format&fit=crop" alt="Estación de manicura — Nobú Beauty Club" loading="lazy">
           <div class="gallery-cell-overlay">
             <span class="gallery-cell-caption">Estación de manicura</span>
           </div>
@@ -3412,7 +3539,7 @@
 
         <!-- 2. Nail detail: nude polka dots -->
         <div class="gallery-cell reveal" onclick="openLightbox(1)">
-          <img src="https://lh3.googleusercontent.com/p/AF1QipP3F_TNqiFn5k-Mb0oqj3Iaj-8DjpQFqx8Dl2Gi=s1360-w1360-h1020" alt="Manicura nude con detalle de puntos — técnica de pincel" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=1200&q=85&auto=format&fit=crop" alt="Detalle de manicura premium — técnica de pincel" loading="lazy">
           <div class="gallery-cell-overlay">
             <span class="gallery-cell-caption">Técnica de pincel</span>
           </div>
@@ -3421,19 +3548,44 @@
           </div>
         </div>
 
-        <!-- 3. Brand panel -->
-        <div class="gallery-brand">
-          <span class="gallery-brand-name">NOBÚ</span>
-          <div class="gallery-brand-line"></div>
-          <span class="gallery-brand-sub">Beauty Club</span>
-          <span class="gallery-brand-tagline">Toledo, desde el corazón</span>
+        <!-- 3. Skincare detail -->
+        <div class="gallery-cell reveal" onclick="openLightbox(2)">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=85&auto=format&fit=crop" alt="Tratamiento facial premium — piel cuidada" loading="lazy">
+          <div class="gallery-cell-overlay">
+            <span class="gallery-cell-caption">Tratamiento facial</span>
+          </div>
+          <div class="gallery-cell-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </div>
         </div>
 
-        <!-- 4. Lounge area (wide) -->
-        <div class="gallery-cell gallery-cell--wide reveal" onclick="openLightbox(2)">
-          <img src="https://lh3.googleusercontent.com/p/AF1QipNe_tEBh5SrEhiRGnJDAb0hZpTVXGD62a5MN2Ew=s1360-w1360-h1020" alt="Zona de espera y relax — sofá, decoración cuidada" loading="lazy">
+        <!-- 4. Lounge area -->
+        <div class="gallery-cell reveal" onclick="openLightbox(3)">
+          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200&q=85&auto=format&fit=crop" alt="Zona de espera y relax — ambiente cuidado" loading="lazy">
           <div class="gallery-cell-overlay">
             <span class="gallery-cell-caption">Zona de relax</span>
+          </div>
+          <div class="gallery-cell-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- 5. Brow / lash detail -->
+        <div class="gallery-cell reveal" onclick="openLightbox(4)">
+          <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=1200&q=85&auto=format&fit=crop" alt="Diseño de cejas y pestañas — atelier" loading="lazy">
+          <div class="gallery-cell-overlay">
+            <span class="gallery-cell-caption">Cejas &amp; pestañas</span>
+          </div>
+          <div class="gallery-cell-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- 6. Spa ambient -->
+        <div class="gallery-cell reveal" onclick="openLightbox(5)">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&q=85&auto=format&fit=crop" alt="Cabina privada — ambiente spa premium" loading="lazy">
+          <div class="gallery-cell-overlay">
+            <span class="gallery-cell-caption">Cabina privada</span>
           </div>
           <div class="gallery-cell-icon">
             <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
@@ -3455,10 +3607,14 @@
           <h2>Lo que dicen quienes<br>ya lo <em>vivieron</em></h2>
         </div>
         <div class="test-rating">
-          <div class="test-rating-number" id="ratingCounter">0</div>
+          <div class="test-rating-number" id="ratingCounter" data-start="4.0" data-end="4.9" data-duration="1500">4.9</div>
           <div>
             <div class="test-rating-stars">★ ★ ★ ★ ★</div>
             <div class="test-rating-label">Valoración en Google</div>
+            <div class="test-google-badge">
+              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+              <span>Reseñas verificadas en Google</span>
+            </div>
           </div>
         </div>
       </div>
@@ -3473,7 +3629,7 @@
             <div class="test-author-initial">S</div>
             <div class="test-author-info">
               <span class="test-author-name">SGC</span>
-              <span class="test-author-source">Google Reviews · ★★★★★</span>
+              <span class="test-author-source test-author-google"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Reseña verificada · ★★★★★</span>
             </div>
           </div>
         </div>
@@ -3488,7 +3644,7 @@
               <div class="test-author-initial">C</div>
               <div class="test-author-info">
                 <span class="test-author-name">Celia C.</span>
-                <span class="test-author-source">Google Reviews · ★★★★★</span>
+                <span class="test-author-source test-author-google"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Reseña verificada · ★★★★★</span>
               </div>
             </div>
           </div>
@@ -3500,7 +3656,7 @@
               <div class="test-author-initial">S</div>
               <div class="test-author-info">
                 <span class="test-author-name">Sara T.</span>
-                <span class="test-author-source">Google Reviews · ★★★★★</span>
+                <span class="test-author-source test-author-google"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Reseña verificada · ★★★★★</span>
               </div>
             </div>
           </div>
@@ -3512,7 +3668,7 @@
               <div class="test-author-initial">C</div>
               <div class="test-author-info">
                 <span class="test-author-name">Carmen J.</span>
-                <span class="test-author-source">Google Reviews · ★★★★★</span>
+                <span class="test-author-source test-author-google"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Reseña verificada · ★★★★★</span>
               </div>
             </div>
           </div>
@@ -3538,6 +3694,13 @@
           <div class="test-highlight-value">100%</div>
           <div class="test-highlight-label">Personal certificado</div>
         </div>
+      </div>
+
+      <div class="test-google-cta reveal">
+        <a href="https://www.google.com/search?q=Nob%C3%BA+Beauty+Club+Toledo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.3 35.5 44 30.2 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+          Ver todas las reseñas en Google →
+        </a>
       </div>
 
     </div>
@@ -3588,6 +3751,15 @@
           </div>
           <div class="faq-answer">
             <p>Solo necesitas escribirnos por WhatsApp o llamar al 675 57 93 92. Te confirmamos disponibilidad en minutos. Reservamos tu cabina privada y el tiempo que necesitas — sin prisas, sin esperas.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4><span class="faq-tag">Tratamiento</span>¿Cuánto tiempo tarda una manicura o pedicura?</h4>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>Las manicuras con técnica brush duran entre 45 y 75 minutos, dependiendo del diseño y acabado. Las pedicuras entre 60 y 90 minutos. Reservamos el tiempo completo para que no haya prisas — tu cita no tiene límite de tiempo forzado.</p>
           </div>
         </div>
         <div class="faq-item reveal">
@@ -3721,7 +3893,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2024 Nobú Beauty Club · Toledo, España</p>
+        <p>© 2025 Nobú Beauty Club · Toledo, España</p>
         <p>Diseñado con ✦ en Toledo · <a href="#">Política de privacidad</a> · <a href="#">Aviso legal</a></p>
       </div>
     </div>
@@ -3744,7 +3916,7 @@
     <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">
       <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <div class="lightbox-counter" id="lightboxCounter">1 / 3</div>
+    <div class="lightbox-counter" id="lightboxCounter">1 / 6</div>
   </div>
 
   <script>
@@ -3938,32 +4110,29 @@
     });
 
     // ── Rating Counter Animation ──
-    const ratingEl = document.getElementById('ratingCounter');
-    let ratingAnimated = false;
-
-    const ratingObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !ratingAnimated) {
-          ratingAnimated = true;
-          animateCounter(ratingEl, 0, 4.9, 1500);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    ratingObserver.observe(ratingEl);
-
-    function animateCounter(el, start, end, duration) {
+    function animateCounter(el) {
+      if (el.dataset.animated) return;
+      el.dataset.animated = 'true';
+      const start = parseFloat(el.dataset.start || '4.0');
+      const end = parseFloat(el.dataset.end || '4.9');
+      const duration = parseInt(el.dataset.duration || '1500');
       const startTime = performance.now();
-      function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4); // ease-out quart
-        const current = start + (end - start) * eased;
-        el.textContent = current.toFixed(1);
+      function update(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        el.textContent = (start + (end - start) * eased).toFixed(1);
         if (progress < 1) requestAnimationFrame(update);
       }
       requestAnimationFrame(update);
     }
+
+    const ratingObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) animateCounter(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.test-rating-number, .counter-rating').forEach(el => ratingObserver.observe(el));
 
     // ── FAQ Accordion ──
     function toggleFaq(questionEl) {
